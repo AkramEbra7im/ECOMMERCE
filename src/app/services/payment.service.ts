@@ -20,7 +20,7 @@ export class PaymentService {
   }
     checkout(cartId:string,shippingAddress:any):Observable<any>
     {
-      const encodedUrl = encodeURIComponent(`http://localhost:4200/#`);
+      const encodedUrl = encodeURIComponent(`https://akramebra7im.github.io/ECommerce/#`);
       return this._HttpClient.post(`${this.baseUrl}/api/v1/orders/checkout-session/${cartId}?url=${encodedUrl}`,
       {shippingAddress:shippingAddress},{headers:this.headers})
     }
