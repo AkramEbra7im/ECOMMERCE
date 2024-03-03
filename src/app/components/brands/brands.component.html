@@ -1,0 +1,10 @@
+<app-loading *ngIf="isLoading"></app-loading>
+
+<div class="row">
+    <div *ngFor="let brand of brandList" class=" col-md-3 col-sm-6 mt-4">
+        <div class="product p-2 cursor-pointer">
+            <img height="400" [src]="brand.image" alt="" class="w-100">
+            <h3 class="h6">{{brand.name}}</h3>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<app-loading *ngIf="isLoading"></app-loading>
+
+<div *ngIf="errorMessage && productList.length === 0" class="alert alert-danger text-center my-5">
+    <p>{{errorMessage}}</p>
+</div>
+
+<div *ngIf="!errorMessage && productList.length !== 0">
+    <div class="d-flex justify-content-between mt-4 mb-3 ">
+        <p class="text-main"><span class="fw-bolder">Number Of Cart Item</span> : {{numberOfItem}}</p>
+        <p class="text-main"><span class="fw-bolder">Total Price</span> : {{totalPrice}}</p>
+    </div>
+
+    <button (click)="clearCart()" class="btn btn-outline-danger ms-auto d-block mb-3">CLear Cart</button>
+
+    <div *ngFor="let productItem of productList" class="row shadow-sm p-2 mb-3">
+        <div class="col-md-1">
+            <img [src]="productItem.product.imageCover" class="w-100" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between">
+            <div>
+                <h4>title : {{productItem.product.title}}</h4>
+                <p>price : {{productItem.price}} </p>
+                <span (click)="removeProductFromCart(productItem.product._id)" class="text-danger cursor-pointer">
+                    Remove Product <i class="fa fa-trash"></i></span>
+            </div>
+            <div>
+                <button [disabled]="productItem.count < 2"
+                    (click)="updateCartProductCount(productItem.product._id,productItem.count-1)"
+                    class="btn bg-main text-white">
+                    <span *ngIf="!spinLoading">-</span>
+                    <i *ngIf="spinLoading" class="fa fa-spinner fa-spin"></i>
+                </button>
+                <span class="p-3">{{productItem.count}}</span>
+                <button (click)="updateCartProductCount(productItem.product._id,productItem.count+1)"
+                    class="btn bg-main text-white">
+                    <span *ngIf="!spinLoading">+</span>
+                    <i *ngIf="spinLoading" class="fa fa-spinner fa-spin"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <button [routerLink]="['/shippingAddress',cartId]" class="btn bg-main text-white ms-auto d-block mb-5">Pay</button>
+</div>

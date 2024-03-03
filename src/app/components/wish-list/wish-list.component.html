@@ -1,0 +1,25 @@
+<app-loading *ngIf="isLoading"></app-loading>
+
+<div *ngIf="errorMessage && productList.length === 0" class="alert alert-danger text-center my-5">
+    <p>{{errorMessage}}</p>
+</div>
+
+<div *ngIf="!errorMessage && productList.length !== 0" class="mt-5">
+    
+    <div *ngFor="let productItem of productList" class="row shadow-sm p-2 mb-3">
+        <div class="col-md-1">
+            <img [src]="productItem.imageCover" class="w-100" alt="">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between">
+            <div>
+                <h4>title : {{productItem.title}}</h4>
+                <p>price : {{productItem.price}} </p>
+                <span (click)="removeProductFromWishList(productItem._id)" class="text-danger cursor-pointer">
+                    Remove Product <i class="fa fa-trash"></i></span>
+            </div>
+            <div>
+                <button (click)="addProductToCart(productItem._id)" class="btn bg-main text-white ms-auto d-block mb-5">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>

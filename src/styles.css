@@ -1,0 +1,147 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+
+:root {
+    --main-color: #0aad0a;
+    --light-color: #f0f3f2;
+    --shadow: rgba(145, 158, 171, .2) 0px 2px 4px -1px, rgba(145, 158, 171, .14) 0px 4px 5px 0px, rgba(145, 158, 171, .12) 0px 1px 10px 0px;
+    --font-family: 'Encode Sans Expanded', sans-serif;
+    --rating-color: #ffc908;
+}
+
+body {
+    font-family: var(--font-family) !important;
+}
+
+.rating-color {
+    color: var(--rating-color);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+a,
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.product:hover {
+    box-shadow: var(--shadow);
+    border: solid 1px var(--main-color);
+}
+
+.product .btn {
+    transition: transform 1s, opacity 1s;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.product:hover .btn {
+    opacity: 1;
+    transform: translateY(0%);
+
+}
+
+.font-sm {
+    font-size: 14px;
+}
+
+.text-main {
+    color: var(--main-color);
+}
+
+.bg-main {
+    background-color: var(--main-color) !important;
+}
+
+.bg-main-light {
+    background-color: var(--light-color) !important;
+}
+
+.nav-link {
+    transition: all .5s;
+}
+
+.loadingScreen {
+    z-index: 999999;
+    background-color: #ffffff;
+    transition: all .5s;
+}
+
+.loader {
+    animation: rotate 1s infinite;
+    height: 50px;
+    width: 50px;
+}
+
+.loader:before,
+.loader:after {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 20px;
+    width: 20px;
+}
+
+.loader:before {
+    animation: ball1 1s infinite;
+    background-color: var(--main-color);
+    box-shadow: 30px 0 0 #ff3d00;
+    margin-bottom: 10px;
+}
+
+.loader:after {
+    animation: ball2 1s infinite;
+    background-color: #ff3d00;
+    box-shadow: 30px 0 0 var(--main-color);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) scale(0.8)
+    }
+
+    50% {
+        transform: rotate(360deg) scale(1.2)
+    }
+
+    100% {
+        transform: rotate(720deg) scale(0.8)
+    }
+}
+
+@keyframes ball1 {
+    0% {
+        box-shadow: 30px 0 0 #ff3d00;
+    }
+
+    50% {
+        box-shadow: 0 0 0 #ff3d00;
+        margin-bottom: 0;
+        transform: translate(15px, 15px);
+    }
+
+    100% {
+        box-shadow: 30px 0 0 #ff3d00;
+        margin-bottom: 10px;
+    }
+}
+
+@keyframes ball2 {
+    0% {
+        box-shadow: 30px 0 0 var(--main-color);
+    }
+
+    50% {
+        box-shadow: 0 0 0 var(--main-color);
+        margin-top: -20px;
+        transform: translate(15px, 15px);
+    }
+
+    100% {
+        box-shadow: 30px 0 0 var(--main-color);
+        margin-top: 0;
+    }
+}
